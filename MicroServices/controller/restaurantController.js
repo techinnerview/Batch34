@@ -1,17 +1,54 @@
+var restaurantSchema = require("../model/restaurantModel")
+
 getRestaurants = (req, res, next) => {
-    res.send('This is a list of Restaurants');
+    restaurantSchema.find((err, response) => {
+        if (err)
+            res.send("Exception Occured")
+        else
+            res.send(response);
+    })
+}
+
+getRestaurantByName = (req, res, next) => {
+    restaurantSchema.find({ "name": req.query.name }, (err, response) => {
+        if (err)
+            res.send("Exception Occured")
+        else
+            res.send(response);
+    })
 }
 
 addRestaurant = (req, res, next) => {
-    res.send('Adding a new Restaurant');
+    var restautantsToAdd = new restaurantSchema({
+        name: req.body.name,
+        description: req.body.description,
+        address: req.body.address
+    })
+
+    restautantsToAdd.save((err, response) => {
+        if (err)
+            res.send("Exception Occurred");
+        else
+            res.send({ status: 200, message: "Restaurant added successfully", restaurant: response });
+    })
 }
 
 updateRestaurant = (req, res, next) => {
-    res.send('This is a list of Restaurants');
+    restaurantSchema.updateMany({ "name": req.query.name }, { "address": req.body.address }, (err, reponse) => {
+        if(err)
+            res.send("Exception Occurred")
+        else
+            res.send({ status: 200, message: "Restaurant Updated Successfully"});
+    })
 }
 
-deleteRestaurant = (req, res, next) => {
-    res.send('This is a list of Restaurants');
+deleteRestaurantByName = (req, res, next) => {
+    restaurantSchema.remove({ "name": req.query.name }, (err, reponse) => {
+        if(err)
+            res.send("Exception Occurred")
+        else
+            res.send({ status: 200, message: "Restaurant Deleted Successfully"});
+    })
 }
 
 module.exports = { getRestaurants, addRestaurant }
