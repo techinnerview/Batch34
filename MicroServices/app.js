@@ -10,7 +10,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var restaurantRouter = require('./routes/restaurants');
 
-mongoose.connect(DB_URL);
+mongoose.connect();
 var app = express();
 
 // view engine setup
