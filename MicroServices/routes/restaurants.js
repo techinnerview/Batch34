@@ -15,6 +15,10 @@ router.get('/getRestaurantByName', function (req, res, next) {
     getRestaurantByName(req, res, next);
 });
 
+router.get('/getRestaurantById/:id', function (req, res, next) {
+    getRestaurantById(req, res, next);
+});
+
 router.post('/addRestaurant', function (req, res, next) {
     addRestaurant(req, res, next);
 });

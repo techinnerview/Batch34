@@ -1,4 +1,4 @@
-var restaurantSchema = require("../model/restaurantModel")
+var restaurantSchema = require("../model/restaurantModel");
 
 getRestaurants = (req, res, next) => {
     restaurantSchema.find((err, response) => {
@@ -10,7 +10,16 @@ getRestaurants = (req, res, next) => {
 }
 
 getRestaurantByName = (req, res, next) => {
-    restaurantSchema.find({ "name": req.query.name }, (err, response) => {
+    restaurantSchema.find({ "city": req.query.name }, (err, response) => {
+        if (err)
+            res.send("Exception Occured")
+        else
+            res.send(response);
+    })
+}
+
+getRestaurantById = (req, res, next) => {
+    restaurantSchema.findById(req.params.id, (err, response) => {
         if (err)
             res.send("Exception Occured")
         else
@@ -22,7 +31,14 @@ addRestaurant = (req, res, next) => {
     var restautantsToAdd = new restaurantSchema({
         name: req.body.name,
         description: req.body.description,
-        address: req.body.address
+        address: req.body.address,
+        location: req.body.location,
+        image: req.body.image,
+        cuisine: req.body.cuisine,
+        min_price: req.body.min_price,
+        contact: req.body.contact,
+        locality: req.body.locality,
+        city: req.body.city,
     })
 
     restautantsToAdd.save((err, response) => {

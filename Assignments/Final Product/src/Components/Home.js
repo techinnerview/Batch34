@@ -21,17 +21,17 @@ class Home extends React.Component
         axios(
             {
                 method: 'GET',
-                url: 'http://localhost:2020/api/citylist',
+                url: 'http://localhost:3000/citylist/getcitylist',
                 headers: {'Content-Type' : 'application/json' }
-            }).then(response => this.setState( { location : response.data.citylist } )).catch()
+            }).then(response => this.setState( { location : response.data } )).catch()
 
         //QuickSearch mealtype option
         axios(
             {
                 method: 'GET',
-                url: 'http://localhost:2020/api/mealTypes',
+                url: 'http://localhost:3000/meals/getMeals',
                 headers: {'Content-Type' : 'application/json' }
-            }).then(response => this.setState( { mealTypes : response.data.mealtypes } )).catch()
+            }).then(response => this.setState( { mealTypes : response.data } )).catch()
     }
 
     render(){

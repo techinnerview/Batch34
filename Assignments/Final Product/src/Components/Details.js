@@ -68,9 +68,9 @@ class Details extends React.Component
 
         axios({
             method : 'GET',
-            url : `http://localhost:2020/api/resturantbyid/${resturantId}`,
+            url : `http://localhost:3000/restaurant/getRestaurantById/${resturantId}`,
             headers : { 'Content-Type' : 'application/json' },
-        }).then(response => this.setState({resturantData : response.data.resturant, resturantId})).catch()
+        }).then(response => this.setState({resturantData : response.data, resturantId})).catch()
     }
      
     // General Function
@@ -227,7 +227,7 @@ class Details extends React.Component
                     <div class="content">
                         <div class="about">About this place</div>
                         <div class="Detailhead">Cuisine</div>
-                        <div class="Detailvalue">{resturantData && resturantData.cuisine ? resturantData.cuisine.map((item) => `${item.name}, `) : null}</div>
+                        <div class="Detailvalue">{resturantData.cuisine}</div>
                         <div class="Detailhead">Average Cost</div>
                         <div class="Detailvalue">&#8377; {resturantData.min_price} for two people(approx)</div>
                     </div>

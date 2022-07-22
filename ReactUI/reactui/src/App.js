@@ -18,8 +18,12 @@ class App extends React.Component {
   }
 
   render() {
+    const params = window.location.search;
     return (
-      <CarouselComponent />
+      <>
+        <div>{params}</div>
+        <CarouselComponent />
+      </>
     )
     // if(this.state.totalClicks > 10) {
     //   return (
@@ -40,21 +44,21 @@ class App extends React.Component {
     //   )
     // }    
 
-  //   return this.state.totalClicks > 10 ? (
-  //     <div>
-  //       <h1>Number of Clicks <span>{this.state.totalClicks}</span></h1>
-  //       <TypeAheadComponent messageFromParent={"Enter City Name"} />
-  //     </div>
-  //   ) : (
-  //     <div>
-  //       <h1>Number of Clicks <span>{this.state.totalClicks}</span></h1>
-  //       <LifeCycleComponent
-  //         messageFromParent={"Hello Everyone !!"}
-  //         callToParent={this.updateParent.bind(this)}
-  //       />
-  //     </div>
-  //   )
-    }
+    //   return this.state.totalClicks > 10 ? (
+    //     <div>
+    //       <h1>Number of Clicks <span>{this.state.totalClicks}</span></h1>
+    //       <TypeAheadComponent messageFromParent={"Enter City Name"} />
+    //     </div>
+    //   ) : (
+    //     <div>
+    //       <h1>Number of Clicks <span>{this.state.totalClicks}</span></h1>
+    //       <LifeCycleComponent
+    //         messageFromParent={"Hello Everyone !!"}
+    //         callToParent={this.updateParent.bind(this)}
+    //       />
+    //     </div>
+    //   )
+  }
 }
 
 export default App;
